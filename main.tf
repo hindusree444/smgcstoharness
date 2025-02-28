@@ -8,7 +8,7 @@ terraform {
 provider "google" {
   project     = "statemigration"        # GCP project ID
   region      = "us-central1"           # GCP region where resources will be created
-  credentials = file("<PATH_TO_YOUR_SERVICE_ACCOUNT_KEY_JSON>")  # Service account key for authentication
+  
 }
 
 resource "google_compute_instance" "vm_instance" {
