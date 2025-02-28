@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket         = "stgcpharnesss"            
+    bucket         = "stgcpharnesss1"            
     key            = "terraform/statefile/terraform.tfstate"  
     region         = "us-central1"                      
     encrypt        = true                              
