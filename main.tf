@@ -8,7 +8,7 @@ terraform {
 }
 provider "google" {
 
-  project     = "devops-e2e-workflow"                               
+  project     = "statemigration"                               
   region      = "us-central1"                                     
 }
 
