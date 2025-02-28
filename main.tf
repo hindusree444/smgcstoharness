@@ -1,27 +1,24 @@
 terraform {
   backend "gcs" {
-    bucket         = "stgcpharnesss1"   # Ensure this bucket exists
-    prefix         = "terraform/state"  # Optional, but helps in organizing state
-    region         = "us-central1"
-    encrypt        = true
-    # Optional: state locking, if you want to add locking mechanism, you can add Firestore as a lock backend
+    bucket = "stgcpharnesss1"  # GCS bucket where Terraform state will be stored
+    prefix = "terraform/state"  # Path inside the bucket (optional)
   }
 }
 
 provider "google" {
-  project     = "statemigration"       # Ensure this project exists
-  region      = "us-central1"          # Ensure this region is correct
-  credentials = file("<PATH_TO_YOUR_SERVICE_ACCOUNT_KEY_JSON>")  # Harness service account credentials
+  project     = "statemigration"        # GCP project ID
+  region      = "us-central1"           # GCP region where resources will be created
+  credentials = file("<PATH_TO_YOUR_SERVICE_ACCOUNT_KEY_JSON>")  # Service account key for authentication
 }
 
 resource "google_compute_instance" "vm_instance" {
   name         = "my-gcp-vm"
   machine_type = "e2-medium"
-  zone         = "us-central1-a"
+  zone         = "us-central1-a"  # GCP zone where the VM will be created
 
   boot_disk {
     initialize_params {
-      image = "debian-9-stretch-v20210114"
+      image = "debian-9-stretch-v20210114"  # Image to use for the VM
     }
   }
 
